@@ -7,7 +7,7 @@ exports.up = function(knex) {
       .notNullable()
       .unique();
     users.string("password", 128).notNullable();
-    users.integer("phone number", 11);
+    users.integer("phonenumber", 11);
   });
 };
 
