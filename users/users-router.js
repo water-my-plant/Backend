@@ -9,6 +9,6 @@ router.get("/", (req, res) => {
     })
     .catch(error => res.send(error));
 });
-// localhost:5000/api/users tested in
+// GET localhost:5000/api/users tested in Postman
 
 module.exports = router;

@@ -22,6 +22,7 @@ router.post("/register", (req, res) => {
       res.status(500).json(error);
     });
 });
+// tested POST localhost:5000/api/auth/register in Postman
 
 router.post("/login", (req, res) => {
   let { username, password } = req.body;
@@ -46,6 +47,7 @@ router.post("/login", (req, res) => {
       res.status(500).json(error);
     });
 });
+// tested POST http://localhost:5000/api/auth/login in Postman
 
 function generateToken(user) {
   // header payload and verify signature
