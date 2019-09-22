@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const Users = require("../users/users-model.js");
 
+// register new user
 router.post("/register", (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 12); // 2 ^ n
@@ -24,6 +25,7 @@ router.post("/register", (req, res) => {
 });
 // tested POST localhost:5000/api/auth/register in Postman
 
+// login user
 router.post("/login", (req, res) => {
   let { username, password } = req.body;
 
@@ -40,7 +42,7 @@ router.post("/login", (req, res) => {
           token
         });
       } else {
-        res.status(401).json({ message: "You shall not pass!" });
+        res.status(401).json({ message: "Invalid Credentials" });
       }
     })
     .catch(error => {
