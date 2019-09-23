@@ -1,16 +1,41 @@
 exports.up = function(knex) {
-  return knex.schema.createTable("users", users => {
-    users.increments();
-    users.string("fullname", 128).notNullable();
-    users
-      .string("username", 128)
-      .notNullable()
-      .unique();
-    users.string("password", 128).notNullable();
-    users.string("phonenumber", 11);
-  });
+  return knex.schema
+    .createTable("users", tbl => {
+      tbl.increments();
+      tbl.string("fullname", 128).notNullable();
+      tbl
+        .string("username", 128)
+        .notNullable()
+        .unique();
+      tbl.string("password", 128).notNullable();
+      tbl.string("phonenumber", 11);
+    })
+
+    .createTable("plants", tbl => {
+      tbl.increments();
+      tbl.string("plant_species", 256).notNullable();
+      tbl.string("plant_name", 256).notNullable();
+      tbl
+        .integer("users_id")
+        .notNullable()
+        .references("id")
+        .inTable("users");
+    })
+
+    .createTable("water", tbl => {
+      tbl.increments();
+      tbl
+        .integer("plants_id")
+        .references("id")
+        .inTable("plants")
+        .onDelete("CASCADE");
+      tbl.dateTime("water schedule");
+    });
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists("users");
+  return knex.schema
+    .dropTableIfExists("users")
+    .dropTableIfExists("plants")
+    .dropTableIfExists("water");
 };

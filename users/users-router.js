@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 const Users = require("./users-model.js");
 
+// gets a list of users
 router.get("/", (req, res) => {
   Users.find()
     .then(users => {
@@ -11,6 +12,7 @@ router.get("/", (req, res) => {
 });
 // GET localhost:5000/api/users tested in Postman
 
+// gets a specific user
 router.get("/:id", (req, res) => {
   const { id } = req.params;
   Users.findById(id)
