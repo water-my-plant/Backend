@@ -7,7 +7,7 @@ require("dotenv").config();
 
 const authRouter = require("../auth/auth-router.js");
 const usersRouter = require("../users/users-router.js");
-const plantsRouter = require("../plants/-plants-router.js");
+const plantsRouter = require("../plants/plants-router.js");
 const db = require("../database/dbConfig.js");
 
 const server = express();
