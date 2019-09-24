@@ -23,6 +23,13 @@ exports.up = function(knex) {
           .inTable("users")
           .onUpdate("CASCADE")
           .onDelete("CASCADE");
+        tbl
+          .integer("water_id")
+          .notNullable()
+          .references("id")
+          .inTable("water")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
       })
       // water schedule
       .createTable("water", tbl => {
