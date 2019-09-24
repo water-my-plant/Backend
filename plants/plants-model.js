@@ -3,7 +3,6 @@ const db = require("../database/dbConfig.js");
 module.exports = {
   find,
   findById,
-  findPlants,
   add,
   update,
   remove
@@ -19,18 +18,6 @@ function findById(id) {
   return db("plants")
     .where({ id })
     .first();
-}
-
-function findPlants(plants_id) {
-  return db("steps as st")
-    .join("schemes as s", "s.id", "st.scheme_id")
-    .select(
-      "st.scheme_id",
-      "s.scheme_name",
-      "st.step_number",
-      "st.instructions"
-    )
-    .where({ plants_id });
 }
 
 // add new plant
