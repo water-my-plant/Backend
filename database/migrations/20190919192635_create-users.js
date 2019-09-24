@@ -1,52 +1,61 @@
 exports.up = function(knex) {
-  return (
-    knex.schema
-      .createTable("users", tbl => {
-        tbl.increments();
-        tbl.string("fullname", 128).notNullable();
-        tbl
-          .string("username", 128)
-          .notNullable()
-          .unique();
-        tbl.string("password", 128).notNullable();
-        tbl.string("phonenumber", 11);
-      })
-      // plants
-      .createTable("plants", tbl => {
-        tbl.increments();
-        tbl.string("plant_name", 256).notNullable();
-        tbl.string("plant_species", 256).notNullable();
-        tbl
-          .integer("users_id")
-          .notNullable()
-          .references("id")
-          .inTable("users")
-          .onUpdate("CASCADE")
-          .onDelete("CASCADE");
-        tbl
-          .integer("water_id")
-          .notNullable()
-          .references("id")
-          .inTable("water")
-          .onUpdate("CASCADE")
-          .onDelete("CASCADE");
-      })
-      // water schedule
-      .createTable("water", tbl => {
-        tbl.increments();
-        tbl
-          .integer("plants_id")
-          .references("id")
-          .inTable("plants")
-          .onDelete("CASCADE");
-        tbl.dateTime("water schedule");
-      })
-  );
+  return knex.schema
+    .createTable("users", tbl => {
+      tbl.increments();
+      tbl.string("fullname", 128).notNullable();
+      tbl
+        .string("username", 128)
+        .notNullable()
+        .unique();
+      tbl.string("password", 128).notNullable();
+      tbl.string("phonenumber", 11);
+    })
+    .createTable("water", tbl => {
+      tbl.increments();
+      tbl.dateTime("water_schedule");
+    })
+    .createTable("plants", tbl => {
+      tbl.increments();
+      tbl.string("plant_name", 256).notNullable();
+      tbl.string("plant_species", 256).notNullable();
+      // foreign key setup using knex
+      tbl
+        .integer("water_id")
+        .unsigned()
+        .references("id")
+        // this table must exist
+        .inTable("water")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+    })
+    .createTable("water_plants", tbl => {
+      tbl
+        .integer("water_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        // this table must exist
+        .inTable("water")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+      tbl
+        .integer("plants_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        // this table must exist
+        .inTable("plants")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
+      tbl.primary(["water_id", "plants_id"]);
+    });
 };
 
 exports.down = function(knex) {
+  // reverse order of creation
   return knex.schema
-    .dropTableIfExists("users")
+    .dropTableIfExists("water_plants")
     .dropTableIfExists("plants")
-    .dropTableIfExists("water");
+    .dropTableIfExists("water")
+    .dropTableIfExists("users");
 };
