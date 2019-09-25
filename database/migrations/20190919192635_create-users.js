@@ -12,7 +12,7 @@ exports.up = function(knex) {
     })
     .createTable("water", tbl => {
       tbl.increments();
-      tbl.dateTime("water_schedule");
+      tbl.string("water_schedule", 256);
     })
     .createTable("plants", tbl => {
       tbl.increments();
