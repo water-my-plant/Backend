@@ -6,49 +6,49 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex("water").insert([
         {
-          water_schedule: "2019-09-24 12:00"
+          water_schedule: "Water in 1 day"
         },
         {
-          water_schedule: "2019-09-25 17:00"
+          water_schedule: "Water in 2 days"
         },
         {
-          water_schedule: "2019-09-26 13:00"
+          water_schedule: "Water in 3 days"
         },
         {
-          water_schedule: "2019-09-27 15:00"
+          water_schedule: "Water in 4 days"
         },
         {
-          water_schedule: "2019-09-28 10:00"
+          water_schedule: "Water in 5 days"
         },
         {
-          water_schedule: "2019-09-29 17:30"
+          water_schedule: "Water in 6 days"
         },
         {
-          water_schedule: "2019-09-30 15:00"
+          water_schedule: "Water in 7 days"
         },
         {
-          water_schedule: "2019-10-01 11:30"
+          water_schedule: "Water in 8 days"
         },
         {
-          water_schedule: "2019-10-02 10:00"
+          water_schedule: "Water in 9 days"
         },
         {
-          water_schedule: "2019-10-03 11:00"
+          water_schedule: "Water in 10 days"
         },
         {
-          water_schedule: "2019-10-04 12:00"
+          water_schedule: "Water in 11 days"
         },
         {
-          water_schedule: "2019-10-05 13:00"
+          water_schedule: "Water in 12 days"
         },
         {
-          water_schedule: "2019-10-06 14:00"
+          water_schedule: "Water in 13 days"
         },
         {
-          water_schedule: "2019-10-07 15:00"
+          water_schedule: "Water in 14 days"
         },
         {
-          water_schedule: "2019-10-08 16:00"
+          water_schedule: "Water in 15 days"
         }
       ]);
     });

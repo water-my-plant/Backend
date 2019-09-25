@@ -1,47 +1,37 @@
 const db = require("../database/dbConfig.js");
 
 module.exports = {
-  add,
   find,
-  findBy,
   findById,
   add,
   update,
   remove
 };
 
+// find plant
 function find() {
-  return db("users").select("id", "fullname", "username", "phonenumber");
+  return db("water");
 }
 
-function findBy(filter) {
-  return db("users").where(filter);
-}
-
-async function add(user) {
-  const [id] = await db("users").insert(user);
-
-  return findById(id);
-}
-
+// find plant by ID
 function findById(id) {
-  return db("users")
+  return db("water")
     .where({ id })
     .first();
 }
 
-// add new user
-function add(users) {
-  return db("users")
-    .insert(users)
+// add new plant
+function add(water) {
+  return db("water")
+    .insert(water)
     .then(ids => {
       return findById(ids[0]);
     });
 }
 
-// resolves to update user
+// resolves to updated changes
 function update(changes, id) {
-  return db("users")
+  return db("water")
     .where({ id })
     .update(changes)
     .then(count => {
@@ -49,9 +39,9 @@ function update(changes, id) {
     });
 }
 
-// remove user
+// resolves to a count
 function remove(id) {
-  return db("users")
+  return db("water")
     .where({ id })
     .del();
 }

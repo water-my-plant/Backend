@@ -31,4 +31,55 @@ router.get("/:id", (req, res) => {
 });
 // GET localhost:5000/api/users/3 tested in Postman
 
+// add user
+router.post("/", (req, res) => {
+  const userData = req.body;
+
+  Users.add(userData)
+    .then(user => {
+      res.status(201).json(user);
+    })
+    .catch(error => {
+      res.status(500).json({ message: "Failed to add new user." });
+    });
+});
+// POST http://localhost:5000/api/users/ tested in Postman
+
+// update User
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+
+  Users.findById(id)
+    .then(user => {
+      if (user) {
+        Users.update(changes, id).then(updatedUser => {
+          res.json(updatedUser);
+        });
+      } else {
+        res.status(404).json({ message: "Could not find user with given Id." });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ message: "Failed to update user." });
+    });
+});
+
+// remove user
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+
+  Users.remove(id)
+    .then(deleted => {
+      if (deleted) {
+        res.json({ removed: deleted });
+      } else {
+        res.status(404).json({ message: "Could not find user with given Id." });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ message: "Failed to delete user." });
+    });
+});
+
 module.exports = router;
