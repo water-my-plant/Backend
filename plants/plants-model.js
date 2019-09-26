@@ -8,19 +8,19 @@ module.exports = {
   remove
 };
 
-// find plant
+// finds plant
 function find() {
   return db("plants");
 }
 
-// find plant by ID
+// finds plant by specific id
 function findById(id) {
   return db("plants")
     .where({ id })
     .first();
 }
 
-// add new plant
+// adds new plant
 function add(plant) {
   return db("plants")
     .insert(plant)
@@ -29,7 +29,7 @@ function add(plant) {
     });
 }
 
-// resolves to updated changes
+// updates plant by specific id
 function update(changes, id) {
   return db("plants")
     .where({ id })
@@ -39,7 +39,7 @@ function update(changes, id) {
     });
 }
 
-// resolves to a count
+// removes plant by specific id
 function remove(id) {
   return db("plants")
     .where({ id })

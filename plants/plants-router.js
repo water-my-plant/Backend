@@ -91,5 +91,6 @@ router.delete("/:id", (req, res) => {
       res.status(500).json({ message: "Failed to delete plant." });
     });
 });
+// DELETE http://localhost:5000/api/plants/3 tested in Postman
 
 module.exports = router;
