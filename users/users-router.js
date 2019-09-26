@@ -2,8 +2,10 @@ const router = require("express").Router();
 
 const Users = require("./users-model.js");
 
+const restricted = require("../auth/restricted-middleware.js");
+
 // gets a list of users
-router.get("/", (req, res) => {
+router.get("/", restricted, (req, res) => {
   Users.find()
     .then(users => {
       res.json(users);
@@ -13,7 +15,7 @@ router.get("/", (req, res) => {
 // GET localhost:5000/api/users tested in Postman
 
 // gets a specific user
-router.get("/:id", (req, res) => {
+router.get("/:id", restricted, (req, res) => {
   const { id } = req.params;
   Users.findById(id)
     .then(user => {
@@ -32,7 +34,7 @@ router.get("/:id", (req, res) => {
 // GET localhost:5000/api/users/3 tested in Postman
 
 // add user
-router.post("/", (req, res) => {
+router.post("/", restricted, (req, res) => {
   const userData = req.body;
 
   Users.add(userData)
@@ -46,7 +48,7 @@ router.post("/", (req, res) => {
 // POST http://localhost:5000/api/users/ tested in Postman
 
 // update User
-router.put("/:id", (req, res) => {
+router.put("/:id", restricted, (req, res) => {
   const { id } = req.params;
   const changes = req.body;
 
@@ -54,6 +56,10 @@ router.put("/:id", (req, res) => {
     .then(user => {
       if (user) {
         Users.update(changes, id).then(updatedUser => {
+          // this will remove the password that gets
+          //generated when updating only fullname, username and phonenumber should show
+          // https://stackoverflow.com/questions/37294371/node-js-remove-a-field-from-the-returning-json
+          delete updatedUser.password;
           res.json(updatedUser);
         });
       } else {
@@ -66,7 +72,7 @@ router.put("/:id", (req, res) => {
 });
 
 // remove user
-router.delete("/:id", (req, res) => {
+router.delete("/:id", restricted, (req, res) => {
   const { id } = req.params;
 
   Users.remove(id)
