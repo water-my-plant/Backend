@@ -14,19 +14,12 @@ Permission: none
 
 ## Parameter
 
-| \*\*Field       | Type            | Description\*\* |
-| --------------- | --------------- | --------------- |
-| fullname        | string          | user’s name     |
-| username        | string          | user’s username |
-| password string | user’s password |
-
-|phonenumber string user’s phone number (11 digits)
-| field | type | Description |
-| ----------- | -------------- | -------------------------- |
-| fullname | string | user's name |
-| username | string | user's username |
-| password | string | user's password |
-| phonenumber | string | user's phonenumber |
+| Field       | Type   | Description         |
+| ----------- | ------ | ------------------- |
+| fullname    | string | user’s name         |
+| username    | string | user’s username     |
+| password    | string | user’s password     |
+| phonenumber | string | user's phone number |
 
 ## Request
 
@@ -67,9 +60,10 @@ Permission: none
 
 ### Parameter
 
-**Field Type Description**
-username String user’s username
-password String user’s password
+| Field    | Type   | Description     |
+| -------- | ------ | --------------- |
+| username | string | user’s username |
+| password | string | user’s password |
 
 ### Request
 
