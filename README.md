@@ -1,25 +1,27 @@
 # API for Water-My-Plant Build Week Project
 
-### Pitch
+## Pitch
 
 "Building a schedule around ensuring that all your plants are watered is actually pretty difficult. Water my Plants helps to solve those problems by providing and easy to use interface for creating a plant watering schedule that will remind users to water their plants on a regular basis."
 
-##AUTH - Register
+### AUTH - Register
 
-#POST
+## POST
+
 https://water-my-plant-bw.herokuapp.com/api/auth/register
 
 Permission: none
 
-###Parameter
+## Parameter
 
-Field Type Description
+**Field Type Description**
 fullname string user’s name
 username string user’s username
 password string user’s password
 phonenumber string user’s phone number (11 digits)
 
-###Request
+## Request
+
 ￼￼json
 {
 "fullname": "John Smith",
@@ -28,7 +30,8 @@ phonenumber string user’s phone number (11 digits)
 "phonenumber": "12345678910"
 }
 
-###Response
+## Response
+
 {
 "user": {
 "id": 6,
@@ -40,35 +43,39 @@ phonenumber string user’s phone number (11 digits)
 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImZ1bGxuYW1lIjoiSm9obiBTbWl0aCIsInVzZXJuYW1lIjoidGVzdCIsInBob25lbnVtYmVyIjoiMTIzNDU2Nzg5MTAiLCJpYXQiOjE1Njk2MDYwMDMsImV4cCI6MTU2OTY5MjQwM30.rsXKWILVHqLaT6hNNUXyjtTOTEDLanV3g7UDMZOiiGA"
 }
 
-##AUTH - LOGIN
+## AUTH - LOGIN
 
 Login existing User. Returns the web token.
 
-###POST
+### POST
+
 https://water-my-plant-bw.herokuapp.com/api/auth/login
 
 Permission: none
 
-###Parameter
+### Parameter
 
-Field Type Description
+**Field Type Description**
 username String user’s username
 password String user’s password
 
-###Request
+### Request
 
 {
 "username": "test",
 "password": "abc123"
 }
 
-###Response
+### Response
+
 {
 "message": "Welcome test!",
 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImZ1bGxuYW1lIjoiSm9obiBTbWl0aCIsInVzZXJuYW1lIjoidGVzdCIsInBob25lbnVtYmVyIjoiMTIzNDU2Nzg5MTAiLCJpYXQiOjE1Njk2MTA1MzIsImV4cCI6MTU2OTY5NjkzMn0.Zxk1v6TdgEEJCBJpAz58c50Cc05od-j3gzMmyTUaDRg"
 }
 
-###Error
-###401
-Name Description
+### Error
+
+### 401
+
+**Name Description**
 Invalid Credtentials Invalid Credentials
