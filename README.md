@@ -14,11 +14,19 @@ Permission: none
 
 ## Parameter
 
-**Field Type Description**
-fullname string user’s name
-username string user’s username
-password string user’s password
-phonenumber string user’s phone number (11 digits)
+| \*\*Field       | Type            | Description\*\* |
+| --------------- | --------------- | --------------- |
+| fullname        | string          | user’s name     |
+| username        | string          | user’s username |
+| password string | user’s password |
+
+|phonenumber string user’s phone number (11 digits)
+| field | type | Description |
+| ----------- | -------------- | -------------------------- |
+| fullname | string | user's name |
+| username | string | user's username |
+| password | string | user's password |
+| phonenumber | string | user's phonenumber |
 
 ## Request
 
