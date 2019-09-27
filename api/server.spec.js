@@ -18,5 +18,13 @@ describe("the server", () => {
           expect(res.status).toBe(200);
         });
     });
+
+    it("should return the correct object", () => {
+      return request(server)
+        .get("/")
+        .then(res => {
+          expect(res.type).toEqual("text/html");
+        });
+    });
   });
 });
