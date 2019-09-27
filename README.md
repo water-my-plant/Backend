@@ -23,15 +23,18 @@ phonenumber string user’s phone number (11 digits)
 ## Request
 
 ￼￼json
-{
+
+```{
 "fullname": "John Smith",
 "username": "test",
 "password": "abc123",
 "phonenumber": "12345678910"
 }
+```
 
 ## Response
 
+```
 {
 "user": {
 "id": 6,
@@ -42,6 +45,7 @@ phonenumber string user’s phone number (11 digits)
 },
 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImZ1bGxuYW1lIjoiSm9obiBTbWl0aCIsInVzZXJuYW1lIjoidGVzdCIsInBob25lbnVtYmVyIjoiMTIzNDU2Nzg5MTAiLCJpYXQiOjE1Njk2MDYwMDMsImV4cCI6MTU2OTY5MjQwM30.rsXKWILVHqLaT6hNNUXyjtTOTEDLanV3g7UDMZOiiGA"
 }
+```
 
 ## AUTH - LOGIN
 
@@ -61,17 +65,21 @@ password String user’s password
 
 ### Request
 
+```
 {
 "username": "test",
 "password": "abc123"
 }
+```
 
 ### Response
 
+```
 {
 "message": "Welcome test!",
 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsImZ1bGxuYW1lIjoiSm9obiBTbWl0aCIsInVzZXJuYW1lIjoidGVzdCIsInBob25lbnVtYmVyIjoiMTIzNDU2Nzg5MTAiLCJpYXQiOjE1Njk2MTA1MzIsImV4cCI6MTU2OTY5NjkzMn0.Zxk1v6TdgEEJCBJpAz58c50Cc05od-j3gzMmyTUaDRg"
 }
+```
 
 ### Error
 
