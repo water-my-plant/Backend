@@ -242,3 +242,33 @@ sqlite3
 cross-env
 supertest
 jest
+
+## Team
+
+### UI Team
+
+Ariana Shackelford
+Ryan Smith
+Nick Verdinia
+
+### Front End Team
+
+Kyle Leonard
+Ian Carreras
+Ruth Poliakon
+
+### Backend
+
+Melvin Peepers
+
+### Project Lead
+
+Harrison Brock
+
+## Marketing Page
+
+https://watermyplantsamarketing.netlify.com/
+
+## Single Page App
+
+https://water-my-plants-app.netlify.com/
