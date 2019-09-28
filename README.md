@@ -12,7 +12,7 @@ https://water-my-plant-bw.herokuapp.com/api/auth/register
 
 Permission: none
 
-## Parameter
+### Parameter
 
 | Field       | Type   | Description         |
 | ----------- | ------ | ------------------- |
@@ -21,7 +21,7 @@ Permission: none
 | password    | string | user’s password     |
 | phonenumber | string | user's phone number |
 
-## Request
+### Request
 
 ￼￼json
 
@@ -33,7 +33,7 @@ Permission: none
 }
 ```
 
-## Response
+### Response
 
 ```
 {
@@ -83,10 +83,162 @@ Permission: none
 }
 ```
 
-### Error
-
-#### 401
+### Error 401
 
 | Name                | Description         |
 | ------------------- | ------------------- |
 | Invalid Credentials | Invalid Credentials |
+
+## Plant Data
+
+Posts new Plant Data to the Database
+
+## GET Plant Data
+
+### GET
+
+https://water-my-plant-bw.herokuapp.com/api/plants
+
+Permission User, Admin
+
+### Parameter
+
+| Field  | Type  | Description        |
+| ------ | ----- | ------------------ |
+| plants | array | list of all plants |
+
+#### Error 500
+
+```
+message: "Failed to get plants."
+```
+
+## Add Plant Data
+
+### POST
+
+https://water-my-plant-bw.herokuapp.com/api/plants
+
+Permission User, Admin
+
+### Parameter
+
+| Field          | Type   | Description       |
+| -------------- | ------ | ----------------- |
+| plant_name     | string | plants name       |
+| plant_species  | string | plants species    |
+| water_schedule | string | "water in x days" |
+
+### Request
+
+```
+{
+"plant_name": "test",
+"plant_species": "test_species",
+"water_schedule": "I need to water in x days"
+}
+```
+
+### Response
+
+```
+{
+"id": 1,
+"plant_name": "test",
+"plant_species": "test_species",
+"water_schedule": "I need to water in x days"
+}
+```
+
+### Error 500
+
+```
+message: "Failed to add new plant."
+```
+
+## Plant Data - Delete Plant Data
+
+### Delete
+
+https://water-my-plant-bw.herokuapp.com/api/plants/:id
+
+Permission User, Admin
+
+### Parameter
+
+| Field | Type   | Description |
+| ----- | ------ | ----------- |
+| id    | number | plant_id    |
+
+### Response
+
+```
+message: "removed:" 1
+```
+
+### Error 404
+
+```
+message: "Could not find plant with given Id."
+```
+
+### Error 500
+
+```
+message: "Failed to delete plant."
+```
+
+## Plant Data - Edit Plant Data
+
+###PUT
+https://water-my-plant-bw.herokuapp.com/api/plants/:id
+
+Edits the record with the matching params: id
+Permission User, Admin
+
+### Parameter
+
+| Field          | Type   | Description       |
+| -------------- | ------ | ----------------- |
+| plant_name     | string | plants name       |
+| plant_species  | string | plants species    |
+| water_schedule | string | "water in x days" |
+
+### Response
+
+```
+{
+"id": 1,
+"plant_name": "test",
+"plant_species": "test_species",
+"water_schedule": "I need to water in x days"
+}
+```
+
+### Error 404
+
+```
+message: "Could not find plant with given Id."
+```
+
+### Error 500
+
+```
+message: "Failed to update plant."
+```
+
+## Dependencies
+
+bcrypt.js
+cors
+dotenv
+express
+helmet
+jsonwebtoken
+knex
+knex-cleaner
+nodemon
+sqlite3
+cross-env
+supertest
+jest
