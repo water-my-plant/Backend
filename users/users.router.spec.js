@@ -12,13 +12,13 @@ describe("GET /", () => {
   });
 });
 
-describe("POST /register", () => {
+describe("POST /api/users", () => {
   it("should return JSON", () => {
     return request(server)
-      .post("/api/auth/register")
+      .post("/api/users")
       .send({
         fullname: "testroute",
-        username: "testroute11",
+        username: "testroute",
         password: "abc123",
         phonenumber: "12125555559"
       })
@@ -27,17 +27,17 @@ describe("POST /register", () => {
       });
   });
 
-  it("should return 200", () => {
-    return request(server)
-      .post("/api/auth/login")
-      .send({
-        username: "testroute11",
-        password: "abc123"
-      })
-      .then(res => {
-        expect(res.status).toBe(200);
-      });
-  });
+  // it("should return 201", () => {
+  //   return request(server)
+  //     .post("/api/users")
+  //     .send({
+  //       username: "testroute",
+  //       password: "abc123"
+  //     })
+  //     .then(res => {
+  //       expect(res.status).toBe(201);
+  //     });
+  // });
 });
 
 describe("GET /api/users", () => {
