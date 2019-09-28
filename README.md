@@ -85,7 +85,8 @@ Permission: none
 
 ### Error
 
-### 401
+#### 401
 
-**Name Description**
-Invalid Credtentials Invalid Credentials
+| Name                | Description         |
+| ------------------- | ------------------- |
+| Invalid Credentials | Invalid Credentials |
